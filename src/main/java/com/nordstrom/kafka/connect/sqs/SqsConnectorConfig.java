@@ -16,6 +16,8 @@ abstract class SqsConnectorConfig extends AbstractConfig {
 
     private final Boolean messageAttributesEnabled;
 
+    private final Boolean deleteEnabled;
+
     private final List<String> messageAttributesList;
 
     public SqsConnectorConfig(ConfigDef configDef, Map<?, ?> originals) {
@@ -25,6 +27,7 @@ abstract class SqsConnectorConfig extends AbstractConfig {
         region = getString(SqsConnectorConfigKeys.SQS_REGION.getValue());
         endpointUrl = getString(SqsConnectorConfigKeys.SQS_ENDPOINT_URL.getValue());
         messageAttributesEnabled = getBoolean(SqsConnectorConfigKeys.SQS_MESSAGE_ATTRIBUTES_ENABLED.getValue());
+        deleteEnabled = getBoolean(SqsConnectorConfigKeys.SQS_DELETE_ENABLED.getValue());
 
         List<String> csMessageAttributesList = getList(SqsConnectorConfigKeys.SQS_MESSAGE_ATTRIBUTES_INCLUDE_LIST.getValue());
         messageAttributesList = messageAttributesEnabled ? csMessageAttributesList : new ArrayList<>();
@@ -52,5 +55,9 @@ abstract class SqsConnectorConfig extends AbstractConfig {
 
     public List<String> getMessageAttributesList() {
         return messageAttributesList;
+    }
+
+    public Boolean getDeleteEnabled() {
+        return deleteEnabled;
     }
 }

@@ -34,6 +34,7 @@ Optional properties:
 * `sqs.wait.time.seconds`: Duration (in seconds) to wait for a message to arrive in the queue. Default is 1.
 * `sqs.message.attributes.enabled`: If true, it gets the SQS MessageAttributes and inserts them as Kafka Headers (only string headers are currently supported). Default is false.
 * `sqs.message.attributes.include.list`: The comma separated list of MessageAttribute names to be included, if empty it includes all the Message Attributes. Default is the empty string.
+* `sqs.delete.enabled`: If true, it deletes the message from the SQS queue after it has been successfully processed. Default is false.
 
 ### Sample Configuration
 
